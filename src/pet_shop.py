@@ -55,7 +55,10 @@ def customer_can_afford_pet(customer, pet):
     return customer["cash"] >= pet["price"] 
 
 def sell_pet_to_customer(pet_shop, pet, customer):
-    customer["pets"].append(pet)
-    customer["cash"] -= pet["price"]
-    pet_shop["admin"]["total_cash"] += pet["price"]
-    pet_shop["admin"]["pets_sold"] += 1
+    if pet == None:
+        return
+    else:
+        customer["pets"].append(pet)
+        customer["cash"] -= pet["price"]
+        pet_shop["admin"]["total_cash"] += pet["price"]
+        pet_shop["admin"]["pets_sold"] += 1
